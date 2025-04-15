@@ -14,6 +14,7 @@ import asyncio
 import glob
 from contextlib import asynccontextmanager
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 
 # Set up logging
 logging.basicConfig(
@@ -64,7 +65,17 @@ async def lifespan(app: FastAPI):
 
 # Initialize FastAPI app with lifespan
 app = FastAPI(lifespan=lifespan)
-
+origins = [
+    "http://147.79.66.107",
+    "http://147.79.66.107:8000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Image transformation
 transform_image = transforms.Compose(
     [
