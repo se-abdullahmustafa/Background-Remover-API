@@ -15,6 +15,7 @@ import glob
 from contextlib import asynccontextmanager
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
+torch.backends.nnpack.enabled = False
 
 # Set up logging
 logging.basicConfig(
