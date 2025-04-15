@@ -69,6 +69,8 @@ app = FastAPI(lifespan=lifespan)
 origins = [
     "http://147.79.66.107",
     "http://147.79.66.107:8000",
+    "https://147.79.66.107",
+    "https://147.79.66.107:8000",
 ]
 app.add_middleware(
     CORSMiddleware,
